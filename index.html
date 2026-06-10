@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Network 8: подготовка к тестам</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Network 8">
+        <span class="brand-mark">N8</span>
+        <span>
+          <strong>Network 8</strong>
+          <small>самопроверка, решения, практика</small>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Навигация">
+        <a href="#topics">Темы</a>
+        <a href="#quiz">Тест</a>
+        <a href="#commands">Команды</a>
+        <a href="#solutions">Ответы</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="section dashboard" aria-label="Рабочая панель">
+        <div class="dashboard-head">
+          <div>
+            <p class="eyebrow">Network 8 · финальный тест</p>
+            <h1>Рабочая панель подготовки</h1>
+          </div>
+          <div class="ready-meter">
+            <strong id="heroPercent">0%</strong>
+            <span>готовность</span>
+          </div>
+        </div>
+        <div class="quick-grid">
+          <a class="quick-card main" href="#quiz">
+            <span>01</span>
+            <strong>Решать тест</strong>
+            <em id="stripQuiz">0 / 55</em>
+          </a>
+          <a class="quick-card" href="#commands">
+            <span>02</span>
+            <strong>Тренажер команд</strong>
+            <em id="stripCommands">0 / 0</em>
+          </a>
+          <a class="quick-card" href="#topics">
+            <span>03</span>
+            <strong>Темы и скрины</strong>
+            <em><b id="statTopics">10</b> тем · <b id="statImages">0</b> скринов</em>
+          </a>
+          <a class="quick-card danger" href="#solutions">
+            <span>04</span>
+            <strong>Разбор ошибок</strong>
+            <em><b id="stripMistakes">0</b> ошибок</em>
+          </a>
+        </div>
+      </section>
+
+      <section class="section" id="topics">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Лекции и скрины</p>
+            <h2>Темы</h2>
+          </div>
+          <input id="topicSearch" class="search" type="search" placeholder="Найти тему, команду или термин">
+        </div>
+        <div id="topicGrid" class="topic-grid"></div>
+      </section>
+
+      <section class="reader" id="reader" hidden>
+        <div class="reader-head">
+          <div>
+            <p class="eyebrow" id="readerMeta"></p>
+            <h2 id="readerTitle"></h2>
+          </div>
+          <button class="icon-button" id="readerClose" type="button" title="Закрыть">×</button>
+        </div>
+        <div class="reader-layout">
+          <aside id="readerToc" class="toc"></aside>
+          <article id="readerContent" class="lecture"></article>
+        </div>
+      </section>
+
+      <section class="section" id="quiz">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Самопроверка</p>
+            <h2>Режим теста</h2>
+          </div>
+          <div class="quiz-tools">
+            <select id="quizMode" class="select" aria-label="Режим теста">
+              <option value="all">Все вопросы</option>
+              <option value="unseen">Без повторов</option>
+              <option value="mistakes">Ошибки</option>
+            </select>
+            <button class="button" id="shuffleQuiz" type="button">Перемешать</button>
+            <button class="button" id="resetQuiz" type="button">Сбросить</button>
+          </div>
+        </div>
+        <div class="quiz-layout">
+          <aside class="quiz-map">
+            <div class="mini-head">
+              <span>Навигация</span>
+              <strong id="quizScore">0 верно</strong>
+            </div>
+            <div id="quizNav" class="question-grid"></div>
+          </aside>
+          <div class="quiz-shell">
+            <div class="quiz-progress">
+              <span id="quizCounter">1 / 55</span>
+              <span id="quizHint">Выбери ответ и проверь себя</span>
+            </div>
+            <div id="quizCard" class="quiz-card"></div>
+            <div class="quiz-actions">
+              <button class="button" id="prevQuestion" type="button">Назад</button>
+              <button class="button primary" id="checkQuestion" type="button">Проверить</button>
+              <button class="button" id="nextQuestion" type="button">Дальше</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="commands">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Практика</p>
+            <h2>Тренажер команд</h2>
+          </div>
+          <button class="button" id="copyCommands" type="button">Скопировать шпаргалку</button>
+        </div>
+        <div class="trainer-layout">
+          <aside class="lab-list" id="commandLabs"></aside>
+          <div class="terminal-card">
+            <div class="terminal-head">
+              <div>
+                <p class="eyebrow" id="labTopic">Команды</p>
+                <h3 id="labTitle">Выбери задание</h3>
+              </div>
+              <span id="labStatus" class="pill">0%</span>
+            </div>
+            <p id="labTask" class="muted"></p>
+            <div id="labChecklist" class="checklist"></div>
+            <textarea id="commandInput" class="terminal-input" spellcheck="false" placeholder="Вводи команды Cisco IOS здесь..."></textarea>
+            <div class="quiz-actions">
+              <button class="button primary" id="checkCommands" type="button">Проверить команды</button>
+              <button class="button" id="showCommandAnswer" type="button">Показать решение</button>
+              <button class="button" id="clearCommandInput" type="button">Очистить</button>
+            </div>
+            <div id="commandFeedback"></div>
+          </div>
+        </div>
+        <details class="cheatsheet">
+          <summary>Открыть полную шпаргалку команд</summary>
+          <div id="commandBoard" class="command-board"></div>
+        </details>
+      </section>
+
+      <section class="section split" id="solutions">
+        <div>
+          <p class="eyebrow">Решения тестов</p>
+          <h2>Правильные ответы</h2>
+          <p class="muted">Открывай после попытки: ответы сгруппированы по номерам, рядом короткая подсказка почему так.</p>
+        </div>
+        <div id="solutionList" class="solution-list"></div>
+      </section>
+
+    </main>
+
+    <dialog id="imageModal" class="modal">
+      <button class="icon-button modal-close" id="modalClose" type="button" title="Закрыть">×</button>
+      <img id="modalImage" alt="">
+      <p id="modalCaption"></p>
+    </dialog>
+
+    <script src="lectures-data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
